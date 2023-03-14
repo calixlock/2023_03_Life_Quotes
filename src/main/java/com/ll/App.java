@@ -11,14 +11,16 @@ public class App {
 
         while (true) {
             System.out.printf("명령) ");
-
-
             String cmd = sc.nextLine().trim(); // trim() : 좌우 공백 제거
             if (cmd.equals("종료")) {
                 break;
             }
-
-
+            else if (cmd.equals("등록")) {
+                System.out.printf("명언 : ");
+                String text = sc.nextLine().trim();
+                System.out.printf("작가 : ");
+                String author = sc.nextLine().trim();
+            }
         }
     }
 }
