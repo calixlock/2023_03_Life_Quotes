@@ -3,14 +3,17 @@ package com.ll;
 import java.util.Scanner;
 
 public class App {
-    void run() {
-
-        System.out.println("== 명언 ==");
+    Scanner sc;
+    public App(Scanner sc){
+        this.sc = sc;
+    }
+    public void run() {
 
         while (true) {
             System.out.printf("명령) ");
-            Scanner sc = new Scanner(System.in);
-            String cmd = sc.nextLine();
+
+
+            String cmd = sc.nextLine().trim(); // trim() : 좌우 공백 제거
             if (cmd.equals("종료")) {
                 break;
             }
