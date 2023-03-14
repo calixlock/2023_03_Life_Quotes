@@ -1,11 +1,14 @@
 package com.ll;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
     final Scanner sc;
-    private long lastTextNumber = 1;
+    long lastTextNumber = 0;
+    List<textBook> textBooks = new ArrayList<>();
     public App(Scanner sc){
         this.sc = sc;
     }
@@ -15,18 +18,23 @@ public class App {
             String cmd = sc.nextLine().trim(); // trim() : 좌우 공백 제거
             if (cmd.equals("종료")) {
                 break;
-            }
-            else if (cmd.equals("등록")) {
+            }else if (cmd.equals("등록")) {
+                long id = lastTextNumber + 1;
                 System.out.printf("명언 : ");
                 String text = sc.nextLine().trim();
                 System.out.printf("작가 : ");
-                String author = sc.nextLine().trim();
+                String authorName = sc.nextLine().trim();
 
+                textBook book = new textBook(id, text, authorName);
+                textBooks.add(book);
                 HashMap<String, String> textBook = new HashMap<String, String>();
-                textBook.put(text.toString(),author.toString());
+                textBook.put(text.toString(),authorName.toString());
+                lastTextNumber = id;
                 System.out.printf("%d번 명언이 등록되었습니다.\n",lastTextNumber);
-                lastTextNumber++;
+            }else if (cmd.equals("목록")) {
+                System.out.printf("생성된 명언 수 : %d\n", textBooks.size());
             }
+
         }
     }
 }
