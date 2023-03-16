@@ -1,7 +1,8 @@
 package com.ll;
 
+import com.ll.textBook.textBook;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,6 +21,7 @@ public class App {
                 break;
             }else if (cmd.equals("등록")) {
                 long id = lastTextNumber + 1;
+
                 System.out.printf("명언 : ");
                 String text = sc.nextLine().trim();
                 System.out.printf("작가 : ");
@@ -38,12 +40,12 @@ public class App {
 
                 for (int i = textBooks.size() -1; i >=0; i--){
                     textBook read_textbook = textBooks.get(i);
-
                     System.out.printf("%d / %s / %s\n",read_textbook.getId(),read_textbook.getAuthorName(),read_textbook.getText());
                 }
-            }else if (cmd.equals("삭제")) {
-                System.out.printf("몇 번 명언을 삭제하시겠습니까? : \n");
-                int id = sc.nextInt();
+            }else if (cmd.contains("삭제")) {
+                int cmdIndex = cmd.indexOf("=");
+                System.out.printf("%d번 명언을 삭제하시겠습니까? : \n",cmd.substring(cmdIndex));
+//                int id = sc.nextInt();
             }
 
         }
