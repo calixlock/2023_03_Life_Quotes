@@ -47,23 +47,10 @@ public class App {
                     System.out.printf("%d / %s / %s\n",read_textbook.getId(),read_textbook.getAuthorName(),read_textbook.getText());
                 }
             }else if (cmd.contains("삭제")) {
-                // '?'기준으로 2개로 split
-                String[] cmdBits = cmd.split("\\?",2);
-                String actionCode = cmdBits[0];
-
-                Map<String, String> params = new HashMap<>();
-                // '&'기준으로 command/id,authorName,text 나뉘도록
-                String[] paramsBits = cmdBits[1].split("&");
-                // '&'기준으로 옵션 id/authorName/text 각각 계속 나뉘도록
-                for(String paramStr : paramsBits) {
-                    String[] paramStrBits = paramStr.split("&", 2);
-                    String key = paramStrBits[0];
-                    String value = paramStrBits[1];
-                    params.put(key, value);
-                }
-                System.out.printf("%s",params);
-                System.out.printf("%s\n",cmdBits);
-
+                // rq를 이용해 Request(요청) 처리
+                Rq rq = new Rq(cmd);
+                System.out.printf("%s",rq.getActionCode());
+                System.out.printf("%s",rq.getParams("authorName"));
             }
 
         }
