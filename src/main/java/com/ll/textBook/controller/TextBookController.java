@@ -1,4 +1,4 @@
 package com.ll.textBook.controller;
 
-public class textBookController {
+public class TextBookController {
 }

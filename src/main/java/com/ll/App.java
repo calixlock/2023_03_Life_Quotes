@@ -1,31 +1,33 @@
 package com.ll;
 
-import com.ll.textBook.textBook;
+import com.ll.system.controller.SystemController;
+import com.ll.textBook.controller.TextBookController;
+import com.ll.textBook.entity.textBook;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class App {
-    final Scanner sc;
+
     long lastTextNumber = 0;
     List<textBook> textBooks = new ArrayList<>();
-    public App(Scanner sc){
-        this.sc = sc;
-    }
     public void run() {
+        System.out.println("== 명언 ==");
+        SystemController systemController = new SystemController();
+        TextBookController textBookController = new TextBookController();
+
         while (true) {
             System.out.printf("명령) ");
-            String cmd = sc.nextLine().trim(); // trim() : 좌우 공백 제거
+            String cmd = Container.getScanner().nextLine().trim(); // trim() : 좌우 공백 제거
             if (cmd.equals("종료")) {
                 break;
             }else if (cmd.equals("등록")) {
                 long id = lastTextNumber + 1;
 
                 System.out.printf("명언 : ");
-                String text = sc.nextLine().trim();
+                String text = Container.getScanner().nextLine().trim();
                 System.out.printf("작가 : ");
-                String authorName = sc.nextLine().trim();
+                String authorName = Container.getScanner().nextLine().trim();
 
                 textBook book = new textBook(id, text, authorName);
                 textBooks.add(book);
